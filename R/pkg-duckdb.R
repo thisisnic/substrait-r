@@ -268,7 +268,7 @@ duckdb_funs[["%in%"]] <- function(lhs, rhs) {
       "substrait.Expression"
     )
   }
-
+  browser()
   Reduce(combine_or, equal_expressions)
 }
 
@@ -302,4 +302,8 @@ duckdb_funs[["^"]] <- function(lhs, rhs) {
 
 duckdb_funs[["sum"]] <- function(x) {
   substrait_call_agg("sum", x, .output_type = identity)
+}
+
+duckdb_funs[["mean"]] <- function(x) {
+  substrait_call_agg("avg", x, .output_type = identity)
 }
